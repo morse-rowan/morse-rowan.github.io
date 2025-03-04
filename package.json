@@ -2,7 +2,7 @@
     "name": "personal-website",
     "private": true,
     "version": "0.1.0",
-    "homepage": "https://morse-rowan.github.io/rowan-portfolio/",
+    "homepage": "https://morse-rowan.github.io/rowan-portfolio/about",
     "type": "module",
     "scripts": {
         "dev": "vite",
