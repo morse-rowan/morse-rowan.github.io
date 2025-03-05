@@ -6,23 +6,24 @@ import ReactMarkdown from 'react-markdown';
 // Sample markdown content - you can replace this with your own
 const sampleMarkdown = `
 ## About Me
-
+I'm Rowan Morse, a passionate first-year Computer Science & Data Science student at the University of Pittsburgh. I’m deeply committed to exploring computer vision and deep learning—fields that extend far beyond my classroom studies. Whether through independent projects or hands-on research, I thrive on learning and pushing the boundaries of innovative technology.
 
 ### My Interests
 
 - Computer Vision
 - Machine Learning
-- Vision-Language 
-- Diffusion 
-- Artificial Intelligence 
+- Vision-Language Models
+- Diffusion Techniques
+- Artificial Intelligence
 
 ### My Background
 
-I'm passionate about building efficient, user-friendly applications that solve real-world problems. My journey in computer science began when I was in high school, and I've been hooked ever since.
+Currently, I serve as a Computer Vision Research Assistant at Pitt, where I work on integrating advanced models with real-world applications. Alongside my academic work, I've pursued personal projects such as SafeNet—a lightweight convolutional neural network designed for UAV navigation in disaster zones—which demonstrates my commitment to applying research to solve practical challenges. I am driven by a desire to contribute to academic research and innovate beyond conventional industry roles.
 
 ### What I'm Working On
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras porta condimentum urna, vel eleifend erat placerat quis.
+Right now, I am focused on expanding the capabilities of computer vision systems through research that adapts object understanding and integrates satellite data with vision-language and diffusion models. My projects, like SafeNet, not only showcase my technical skills in TensorFlow and Python but also reflect my ambition to develop robust AI systems for real-time hazard detection and edge deployment. I'm eager to learn from experienced researchers and contribute to groundbreaking work in the field.
+
 `;
 
 const About = () => {

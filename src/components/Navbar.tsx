@@ -28,7 +28,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
           <div className="blob bottom"></div>
         </div>
       </div>
-      
+
       {/* SVG Filter for Lava Lamp */}
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="hidden">
         <defs>
@@ -44,14 +44,14 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
           </filter>
         </defs>
       </svg>
-      
+
       {/* Nav Content */}
       <nav className="absolute bottom-0 left-0 w-full flex justify-between items-center p-4 font-mono">
         <div className="flex flex-col">
           <h1 className="text-2xl font-bold text-white">Rowan Morse</h1>
           <p className="text-sm text-white">Undergraduate in Computer Science</p>
         </div>
-        
+
         {/* Mobile menu button */}
         <div className="md:hidden">
           <button
@@ -82,7 +82,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
             </svg>
           </button>
         </div>
-        
+
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
           <NavLink 
@@ -137,14 +137,24 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
           </button>
         </div>
       </nav>
-      
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div className="relative md:hidden bg-[hsl(250,25.3%,19.4%)] p-4">
+
+      {/* Mobile Navigation with Backdrop and Smooth Transition */}
+      <div
+        className={`fixed inset-0 z-20 md:hidden transition-opacity duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop: clicking this closes the mobile menu */}
+        <div
+          className="absolute inset-0 bg-black opacity-50"
+          onClick={() => setMobileMenuOpen(false)}
+        ></div>
+        {/* Dropdown Menu */}
+        <div className="relative bg-[hsl(250,25.3%,19.4%)] p-4">
           <div className="flex flex-col space-y-3">
             <NavLink 
               to="/" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `px-2 py-1 text-white hover:text-[hsl(251,84.6%,74.5%)] ${
                   isActive ? 'text-[hsl(251,84.6%,74.5%)]' : ''
                 }`
@@ -155,7 +165,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
             </NavLink>
             <NavLink 
               to="/resume" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `px-2 py-1 text-white hover:text-[hsl(251,84.6%,74.5%)] ${
                   isActive ? 'text-[hsl(251,84.6%,74.5%)]' : ''
                 }`
@@ -166,7 +176,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
             </NavLink>
             <NavLink 
               to="/portfolio" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `px-2 py-1 text-white hover:text-[hsl(251,84.6%,74.5%)] ${
                   isActive ? 'text-[hsl(251,84.6%,74.5%)]' : ''
                 }`
@@ -177,7 +187,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
             </NavLink>
             <NavLink 
               to="/contact" 
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `px-2 py-1 text-white hover:text-[hsl(251,84.6%,74.5%)] ${
                   isActive ? 'text-[hsl(251,84.6%,74.5%)]' : ''
                 }`
@@ -186,21 +196,20 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
             >
               Contact
             </NavLink>
-            <div className="flex items-center">
-              <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-              <span className="ml-2 text-white">
+            {/* Combined dark mode toggle button (clicking on the icon or text toggles mode) */}
+            <button
+              onClick={toggleDarkMode}
+              className="flex items-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              <span className="ml-2">
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
               </span>
-            </div>
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
