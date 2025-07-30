@@ -49,7 +49,7 @@ const Portfolio = () => {
           description: "AppLovin's Best Content Creation Challenge ($3,000) @CMU TartanHacks 2025"
         }
       ],
-      liveLink: "https://lnkd.in/d6vBph5M",
+      liveLink: "https://tinyurl.com/38ms8t4x",
       githubLink: "https://github.com/morse-rowan/DreamCatcher"
     },
     {

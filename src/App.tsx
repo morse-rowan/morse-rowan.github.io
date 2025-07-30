@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import About from './pages/About';
-import Resume from './pages/Resume';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
@@ -40,7 +39,6 @@ export default function App() {
         <main className="flex-grow bg-white dark:bg-[hsl(60,2%,16%)] text-gray-800 dark:text-gray-200 transition-colors duration-300">
           <Routes>
             <Route path="/" element={<About />} />
-            <Route path="/resume" element={<Resume />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/portfolio/:projectId" element={<ProjectDetail/>} />
             <Route path="/contact" element={<Contact />} />

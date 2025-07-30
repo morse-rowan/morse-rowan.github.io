@@ -16,3 +16,39 @@ body {
 .dark {
   color-scheme: dark;
 }
+/* In your global CSS file (e.g., src/index.css) */
+
+/* Target blockquotes within the prose class to override default styles */
+.prose blockquote,
+.prose-invert blockquote {
+  font-weight: 400; /* Use normal font weight instead of bold */
+  font-style: normal; /* Remove default italics if any */
+  border-left: none; /* Remove the left "quote" border */
+  padding: 1rem; /* Add some padding all around */
+  border-radius: 0.375rem; /* Make the corners rounded */
+  margin-left: 0; /* Remove default indentation */
+  margin-right: 0;
+}
+
+/* Light mode styles for the callout box */
+.prose blockquote {
+  background-color: #f3f4f6; /* A light gray background (Tailwind's gray-100) */
+  color: #4b5563; /* A darker gray text (Tailwind's gray-600) */
+}
+
+/* Dark mode styles for the callout box */
+.prose-invert blockquote {
+  background-color: hsl(250, 25.3%, 22%); /* A slightly lighter dark background */
+  color: #d1d5db; /* A light gray text for dark mode (Tailwind's gray-300) */
+}
+
+/* Ensure paragraphs inside the callout don't have extra margins from prose */
+.prose blockquote p {
+  margin: 0;
+}
+
+/* Remove the quotation marks from blockquotes */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}

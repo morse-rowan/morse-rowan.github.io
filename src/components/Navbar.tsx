@@ -97,17 +97,6 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
           </NavLink>
           <span className="text-white">/</span>
           <NavLink 
-            to="/resume" 
-            className={({ isActive }) => 
-              `px-2 py-1 rounded-md text-white hover:text-[hsl(251,84.6%,74.5%)] transition-colors ${
-                isActive ? 'text-[hsl(251,84.6%,74.5%)]' : ''
-              }`
-            }
-          >
-            Resume
-          </NavLink>
-          <span className="text-white">/</span>
-          <NavLink 
             to="/portfolio" 
             className={({ isActive }) => 
               `px-2 py-1 rounded-md text-white hover:text-[hsl(251,84.6%,74.5%)] transition-colors ${
@@ -162,17 +151,6 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
               onClick={() => setMobileMenuOpen(false)}
             >
               About
-            </NavLink>
-            <NavLink 
-              to="/resume" 
-              className={({ isActive }) =>
-                `px-2 py-1 text-white hover:text-[hsl(251,84.6%,74.5%)] ${
-                  isActive ? 'text-[hsl(251,84.6%,74.5%)]' : ''
-                }`
-              }
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Resume
             </NavLink>
             <NavLink 
               to="/portfolio" 

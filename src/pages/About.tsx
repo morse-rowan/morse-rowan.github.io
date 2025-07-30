@@ -1,12 +1,12 @@
 // src/pages/About.tsx
 import { useState } from 'react';
-import {Github, Linkedin, Mail, Phone, MapPin, Calendar } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Calendar } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 // Sample markdown content - you can replace this with your own
 const sampleMarkdown = `
 ## About Me
-I'm Rowan Morse, a passionate first-year Computer Science & Data Science student at the University of Pittsburgh. I’m deeply committed to exploring computer vision and deep learning—fields that extend far beyond my classroom studies. Whether through independent projects or hands-on research, I thrive on learning and pushing the boundaries of innovative technology.
+> To be updated
 
 ### My Interests
 
@@ -15,15 +15,6 @@ I'm Rowan Morse, a passionate first-year Computer Science & Data Science student
 - Vision-Language Models
 - Diffusion Techniques
 - Artificial Intelligence
-
-### My Background
-
-Currently, I serve as a Computer Vision Research Assistant at Pitt, where I work on integrating advanced models with real-world applications. Alongside my academic work, I've pursued personal projects such as SafeNet—a lightweight convolutional neural network designed for UAV navigation in disaster zones—which demonstrates my commitment to applying research to solve practical challenges. I am driven by a desire to contribute to academic research and innovate beyond conventional industry roles.
-
-### What I'm Working On
-
-Right now, I am focused on expanding the capabilities of computer vision systems through research that adapts object understanding and integrates satellite data with vision-language and diffusion models. My projects, like SafeNet, not only showcase my technical skills in TensorFlow and Python but also reflect my ambition to develop robust AI systems for real-time hazard detection and edge deployment. I'm eager to learn from experienced researchers and contribute to groundbreaking work in the field.
-
 `;
 
 const About = () => {
@@ -53,19 +44,12 @@ const About = () => {
                 <span>rowan.morse16@gmail.com</span>
               </div>
               <div className="flex items-center">
-                <Phone size={16} className="mr-2" />
-                <span>(978) 243-7266</span>
-              </div>
-              <div className="flex items-center">
                 <Calendar size={16} className="mr-2" />
-                <span>Graduating: May 2027</span>
+                <span>Expected Graduation: April 2027</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={16} className="mr-2" />
-                <span>
-                  Boston, MA <br/>
-                  Pittsburgh, PA
-                </span>
+                <span>Pittsburgh, PA</span>
               </div>
             </div>
             {/* Social Links */}
@@ -79,7 +63,7 @@ const About = () => {
                 <Github size={20} />
               </a>
               <a 
-                href="https://www.linkedin.com/in/rowan-morse/" 
+                href="https://www.linkedin.com/in/rowan-morse" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 bg-gray-100 dark:bg-gray-700 rounded-full hover:bg-[hsl(251,84.6%,74.5%)] dark:hover:bg-[#d97757] hover:text-white transition-colors"
@@ -89,6 +73,32 @@ const About = () => {
             </div>
           </div>
         </div>
+
+        {/* Highlights Section */}
+        <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-3xl font-bold mb-4 text-black dark:text-white">Highlights</h2>
+          <ul className="space-y-4 text-gray-600 dark:text-gray-300">
+            <li>
+              <strong className="text-black dark:text-white">[July 2025]</strong> Following our win at the TartanHacks, AppLovin invited my team and me to their Palo Alto headquarters to present our project, DreamCatcher, to their CTO and engineering team.
+            </li>
+            <li>
+              <strong className="text-black dark:text-white">[June 2025]</strong> I began my internship as an AI/ML Engineer for the AWS Cloud Innovation Center at the University of Pittsburgh's.
+            </li>
+            <li>
+              <strong className="text-black dark:text-white">[February 2025]</strong> My team was awarded 3rd Place ($1,000) at the CMU Perforated AI Hackathon and I co-authored "Exploring the Performance of Perforated Backpropagation".
+            </li>
+            <li>
+              <strong className="text-black dark:text-white">[February 2025]</strong> I began working as a Computer Vision Research Assistant at the University of Pittsburgh, where I engineered a novel data fusion pipeline.
+            </li>
+            <li>
+              <strong className="text-black dark:text-white">[February 2025]</strong> My project, Dream Catcher, won 1st Place for Best Use of Generative AI and 2nd Place for Best Content Creation Hack ($3,000) at the CMU Tartan Hacks Hackathon.
+            </li>
+            <li>
+              <strong className="text-black dark:text-white">[December 2024]</strong> I completed the SafeNet project, engineering a custom CNN for real-time hazard detection that achieved 96.5% recall.
+            </li>
+          </ul>
+        </div>
+
         {/* Markdown Content */}
         <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-6">
           <div className="prose dark:prose-invert max-w-none">

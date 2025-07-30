@@ -1,15 +1,10 @@
-import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const Contact = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold mb-6 text-gray-800 dark:text-white">Get In Touch</h1>
-        
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-10">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-          Feel free to reach out through any of the channels below.
-        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Contact Info Card */}
@@ -31,19 +26,6 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start">
-                <Phone className="mt-1 mr-4 text-[hsl(251,84.6%,74.5%)]" size={20} />
-                <div>
-                  <p className="font-medium text-gray-800 dark:text-white">Phone</p>
-                  <a 
-                    href="tel:+15551234567" 
-                    className="text-gray-600 dark:text-gray-300 hover:text-[hsl(251,84.6%,74.5%)] transition-colors"
-                  >
-                    +1 (978) 243-7266
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
                 <MapPin className="mt-1 mr-4 text-[hsl(251,84.6%,74.5%)]" size={20} />
                 <div>
                   <p className="font-medium text-gray-800 dark:text-white">Location</p>
@@ -59,10 +41,6 @@ const Contact = () => {
           {/* Connect Card */}
           <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Connect With Me</h2>
-            
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Follow me on social media for updates or connect professionally to explore collaboration opportunities.
-            </p>
             
             <div className="grid grid-cols-2 gap-4">
               <a 
@@ -92,12 +70,6 @@ const Contact = () => {
               </p>
             </div>
           </div>
-        </div>
-        
-        <div className="mt-12 text-center">
-          <p className="text-gray-600 dark:text-gray-300">
-            I typically respond to messages within 24-48 hours.
-          </p>
         </div>
       </div>
     </div>
