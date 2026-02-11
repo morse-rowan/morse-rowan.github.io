@@ -1,9 +1,11 @@
+/// <reference types="vite/client" />
 import React, { useEffect, useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 
@@ -12,17 +14,41 @@ const ProjectDetail: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const { projectId } = useParams<{ projectId: string }>();
 
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const withBaseUrl = (url: string) => {
+    if (!url.startsWith('/')) {
+      return url;
+    }
+
+    const trimmedBase = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+    return `${trimmedBase}${url}`;
+  };
+
   useEffect(() => {
     const fetchMarkdown = async () => {
       try {
         setLoading(true);
-        // Try to load the markdown file for the specified project
-        const response = await fetch(`/projects/${projectId}.md`);
-        if (!response.ok) {
-          throw new Error(`Failed to load project details: ${response.status}`);
+
+        if (!projectId) {
+          throw new Error('Missing project id');
         }
-        const text = await response.text();
-        setMarkdown(text);
+
+        const candidatePaths = [
+          `/projects/${projectId}.md`,
+          `/${projectId}/${projectId}.md`,
+        ];
+
+        for (const path of candidatePaths) {
+          const response = await fetch(withBaseUrl(path));
+          const contentType = response.headers.get('content-type') || '';
+          if (response.ok && !contentType.includes('text/html')) {
+            const text = await response.text();
+            setMarkdown(text);
+            return;
+          }
+        }
+
+        throw new Error('Failed to load project details from known paths');
       } catch (error) {
         console.error('Error loading markdown:', error);
         setMarkdown('# Project Not Found\n\nSorry, the project details could not be loaded.');
@@ -31,9 +57,7 @@ const ProjectDetail: React.FC = () => {
       }
     };
 
-    if (projectId) {
-      fetchMarkdown();
-    }
+    fetchMarkdown();
   }, [projectId]);
 
   if (loading) {
@@ -75,9 +99,16 @@ const ProjectDetail: React.FC = () => {
         
         <article className="prose prose-lg dark:prose-invert max-w-none">
         <ReactMarkdown
-          remarkPlugins={[remarkMath]}
+          remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeRaw, rehypeKatex]}
-      >
+          urlTransform={(url) => {
+            if (url.startsWith('http') || url.startsWith('data:') || url.startsWith('#')) {
+              return url;
+            }
+
+            return withBaseUrl(url);
+          }}
+        >
           {markdown}
         </ReactMarkdown>
         </article>

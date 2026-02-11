@@ -28,7 +28,7 @@ const Portfolio = () => {
   // Sample projects with awards
   const projects: Project[] = [
     {
-      id: 1,
+      id: 3,
       title: "DreamCatcher",
       description: "A creative AI-powered platform for generating and sharing dream-inspired artwork.",
       image: "/dreamcatcher.png",
@@ -62,8 +62,20 @@ const Portfolio = () => {
       tags: ["TensorFlow", "Computer Vision", "Google Cloud", "MatPlot", "scikit-learn"],
       githubLink: "https://github.com/morse-rowan/SafeNet"
     },
+    {
+      id: 1,
+      title: "Satellite Image Generator 🛰️",
+      description: "Diffusion from scratch (DDIM/DDPM) to generate 64x64 synthetic Sentinel-2  imagery.",
+      image: "/sat_diffusion/sd_results.png",
+      slug: "sat_diffusion",
+      hasDetails: true,
+      tags: ["PyTorch", "Diffusion", "DDPM", "DDIM", "Remote Sensing"],
+      githubLink: "https://github.com/morse-rowan/satellite_diffusion"
+    },
     // Add more projects as needed
   ];
+
+  const sortedProjects = [...projects].sort((a, b) => a.id - b.id);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -71,7 +83,7 @@ const Portfolio = () => {
         <h1 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Portfolio</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {sortedProjects.map((project) => (
             <div 
               key={project.id} 
               className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-lg overflow-hidden transition-transform hover:-translate-y-1"
