@@ -74,31 +74,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Highlights Section */}
-        <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-3xl font-bold mb-4 text-black dark:text-white">Highlights</h2>
-          <ul className="space-y-4 text-gray-600 dark:text-gray-300">
-            <li>
-              <strong className="text-black dark:text-white">[July 2025]</strong> Following our win at the TartanHacks, AppLovin invited my team and me to their Palo Alto headquarters to present our project, DreamCatcher, to their CTO and engineering team.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">[June 2025]</strong> I began my internship as an AI/ML Engineer for the AWS Cloud Innovation Center at the University of Pittsburgh's.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">[February 2025]</strong> My team was awarded 3rd Place ($1,000) at the CMU Perforated AI Hackathon and I co-authored "Exploring the Performance of Perforated Backpropagation".
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">[February 2025]</strong> I began working as a Computer Vision Research Assistant at the University of Pittsburgh, where I engineered a novel data fusion pipeline.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">[February 2025]</strong> My project, Dream Catcher, won 1st Place for Best Use of Generative AI and 2nd Place for Best Content Creation Hack ($3,000) at the CMU Tartan Hacks Hackathon.
-            </li>
-            <li>
-              <strong className="text-black dark:text-white">[December 2024]</strong> I completed the SafeNet project, engineering a custom CNN for real-time hazard detection that achieved 96.5% recall.
-            </li>
-          </ul>
-        </div>
-
         {/* Markdown Content */}
         <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-6">
           <div className="prose dark:prose-invert max-w-none">
