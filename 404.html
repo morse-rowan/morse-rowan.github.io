@@ -23,6 +23,13 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (function() {
+        const l = window.location;
+        const redirectUrl = `${l.protocol}//${l.host}/?/${l.pathname.replace(/^\//, '')}${l.search ? `&${l.search.slice(1).replace(/&/g, '~and~')}` : ''}${l.hash}`;
+        window.location.replace(redirectUrl);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
