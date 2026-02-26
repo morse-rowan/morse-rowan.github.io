@@ -24,19 +24,9 @@ const About = () => {
     <div className="container mx-auto px-4 py-8 font-sans">
       <div className="max-w-4xl mx-auto">
         {/* Profile Card */}
-        <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-6 mb-8 flex flex-col md:flex-row items-center">
-          {/* Profile Picture */}
-          <div className="mb-4 md:mb-0 md:mr-8">
-            <div className="loading-lazy w-[150px] h-[150px] rounded-full overflow-hidden">
-              <img 
-                src="/headshot.jpg" 
-                alt="Rowan Morse" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+        <div className="bg-white dark:bg-[hsl(250,25.3%,19.4%)] rounded-lg shadow-md p-6 mb-8">
           {/* Profile Info */}
-          <div className="flex-1">
+          <div>
             <h2 className="text-3xl font-bold mb-2 text-black dark:text-white">Rowan Morse</h2>
             <div className="space-y-2 text-gray-600 dark:text-gray-300">
               <div className="flex items-center">
