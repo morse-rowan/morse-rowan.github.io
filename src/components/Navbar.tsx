@@ -139,7 +139,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
           onClick={() => setMobileMenuOpen(false)}
         ></div>
         {/* Dropdown Menu */}
-        <div className="relative bg-[hsl(250,25.3%,19.4%)] p-4">
+        <div className="mobile-navigation relative bg-[hsl(250,25.3%,19.4%)] p-4">
           <div className="flex flex-col space-y-3">
             <NavLink 
               to="/" 

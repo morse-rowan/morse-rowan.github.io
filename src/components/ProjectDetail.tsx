@@ -8,8 +8,11 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
+import TypographySwitch from './TypographySwitch';
+import { useTypographyPreference } from '../hooks/useTypographyPreference';
 
 const ProjectDetail: React.FC = () => {
+  const [typography, setTypography] = useTypographyPreference('writeup');
   const [markdown, setMarkdown] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const { projectId } = useParams<{ projectId: string }>();
@@ -64,7 +67,7 @@ const ProjectDetail: React.FC = () => {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-center mb-6">
+          <div className="writeup-toolbar">
             <Link 
               to="/portfolio" 
               className="flex items-center text-[hsl(251,84.6%,74.5%)] hover:text-[hsl(251,40.2%,54.1%)] transition-colors"
@@ -72,6 +75,7 @@ const ProjectDetail: React.FC = () => {
               <ArrowLeft size={20} className="mr-2" />
               <span>See all projects</span>
             </Link>
+            <TypographySwitch label="Writeup font" value={typography} onChange={setTypography} />
           </div>
           <div className="animate-pulse">
             <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-3/4 mb-6"></div>
@@ -87,7 +91,7 @@ const ProjectDetail: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center mb-6">
+        <div className="writeup-toolbar">
           <Link 
             to="/portfolio" 
             className="flex items-center text-[hsl(251,84.6%,74.5%)] hover:text-[hsl(251,40.2%,54.1%)] transition-colors"
@@ -95,9 +99,10 @@ const ProjectDetail: React.FC = () => {
             <ArrowLeft size={20} className="mr-2" />
             <span>See all projects</span>
           </Link>
+          <TypographySwitch label="Writeup font" value={typography} onChange={setTypography} />
         </div>
         
-        <article className="prose prose-lg dark:prose-invert max-w-none">
+        <article className="writeup-text prose prose-lg dark:prose-invert max-w-none" data-writeup-font={typography}>
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeRaw, rehypeKatex]}

@@ -1,0 +1,40 @@
+:root {
+  --font-reading: 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Match the font stack on the original hosted navigation. */
+  --font-nav: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.site-shell { --font-ui: var(--font-mono); font-family: var(--font-ui); }
+.site-shell[data-ui-font='reading'] { --font-ui: var(--font-reading); }
+.site-shell .font-sans, .site-shell .prose { font-family: var(--font-ui); }
+.site-shell header nav, .site-shell header .mobile-navigation { font-family: var(--font-nav); }
+
+.site-shell .writeup-text.prose {
+  --font-writeup: var(--font-reading);
+  font-family: var(--font-writeup);
+  overflow-wrap: anywhere;
+}
+.site-shell .writeup-text[data-writeup-font='mono'] { --font-writeup: var(--font-mono); }
+.writeup-text :where(pre, .katex-display) { max-width: 100%; overflow-x: auto; overflow-wrap: normal; }
+.writeup-text table { display: block; max-width: 100%; overflow-x: auto; }
+
+.typography-toolbar { display: flex; justify-content: flex-end; max-width: 1152px; margin: auto; padding: 20px 16px 0; }
+.writeup-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-bottom: 32px; }
+.writeup-toolbar > a { min-height: 44px; }
+.typography-switch { margin: 0; padding: 0; border: 0; font: 400 .875rem/1.5 var(--font-reading); }
+.typography-switch legend { padding: 0; margin-bottom: 5px; color: #5c6470; font-size: .75rem; }
+.dark .typography-switch legend { color: #b9bec7; }
+.typography-options { display: flex; width: fit-content; border: 1px solid #c9cdd3; border-radius: 5px; padding: 3px; }
+.dark .typography-options { border-color: #626571; }
+.typography-options label { position: relative; cursor: pointer; }
+.typography-options input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.typography-options span { display: flex; align-items: center; justify-content: center; min-height: 38px; padding: 6px 14px; border-radius: 3px; color: #525963; }
+.dark .typography-options span { color: #c5cad2; }
+.typography-options input:checked + span { background: #272c35; color: #fff; }
+.dark .typography-options input:checked + span { background: #e5e8ed; color: #20252d; }
+.typography-options input:focus-visible + span { outline: 2px solid #668fe7; outline-offset: 3px; }
+@media (max-width: 480px) {
+  .writeup-toolbar { align-items: flex-start; }
+  .writeup-toolbar .typography-switch { margin-left: auto; }
+}
