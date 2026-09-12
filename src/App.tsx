@@ -1,64 +1,66 @@
-// src/App.tsx
-import { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { lazy, Suspense, useEffect, useState } from 'react';
+import { HashRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import About from './pages/About';
-import Portfolio from './pages/Portfolio';
+import Home from './pages/Home';
 import PortfolioGoogle from './pages/PortfolioGoogle';
-import Contact from './pages/Contact';
-import Footer from './components/Footer';
-import './styles/globals.css';
-import ProjectDetail from './components/ProjectDetail';
-import TypographySwitch from './components/TypographySwitch';
-import { useTypographyPreference, type Typography } from './hooks/useTypographyPreference';
+import { useTypographyPreference } from './hooks/useTypographyPreference';
+import './styles/graphite.css';
 
-function MainTypographyControl({ value, onChange }: { value: Typography; onChange: (value: Typography) => void }) {
-  const { pathname } = useLocation();
-  // Writeups have their own independent control next to the back link.
-  if (pathname.startsWith('/portfolio/')) return null;
-  return <div className="typography-toolbar"><TypographySwitch label="UI font" value={value} onChange={onChange} /></div>;
+const ProjectDetail = lazy(() => import('./components/ProjectDetail'));
+
+function RoutePosition() {
+  const location = useLocation();
+  useEffect(() => {
+    // HashRouter owns the hash; section destinations use its query string.
+    const section = new URLSearchParams(location.search).get('section')
+      || (location.pathname === '/contact' ? 'contact' : location.pathname === '/portfolio' ? 'work' : '');
+    const frame = requestAnimationFrame(() => {
+      const target = document.getElementById(section || 'main-content');
+      if (target) {
+        target.focus({ preventScroll: true });
+        if (section) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+        else window.scrollTo({ top: 0, behavior: 'instant' });
+      } else window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [location.key, location.pathname, location.search]);
+  return null;
 }
 
 export default function App() {
   const [uiTypography, setUiTypography] = useTypographyPreference('ui');
   const [darkMode, setDarkMode] = useState(() => {
-    try {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') return false;
-      return true; // default to dark
-    } catch {
-      return true;
-    }
+    try { return localStorage.getItem('theme') === 'dark'; } catch { return false; }
   });
-
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+    document.documentElement.classList.toggle('dark', darkMode);
+    try { localStorage.setItem('theme', darkMode ? 'dark' : 'light'); } catch { /* In-memory theme still works. */ }
   }, [darkMode]);
 
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
-
-  return (
-    <Router>
-      <div className={`site-shell min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`} data-ui-font={uiTypography}>
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <main className="flex-grow bg-white dark:bg-[hsl(60,2%,16%)] text-gray-800 dark:text-gray-200 transition-colors duration-300">
-          <MainTypographyControl value={uiTypography} onChange={setUiTypography} />
+  return <HashRouter>
+    <div className={`site-shell graphite-site${darkMode ? ' dark' : ''}`} data-ui-font={uiTypography}>
+      <a className="skip-link" href="#main-content" onClick={(event) => {
+        event.preventDefault();
+        document.getElementById('main-content')?.focus();
+      }}>Skip to content</a>
+      <Navbar darkMode={darkMode} toggleDarkMode={() => setDarkMode(value => !value)} />
+      <RoutePosition />
+      <main id="main-content" tabIndex={-1}>
+        <Suspense fallback={<div className="article-layout" role="status">Loading writeup…</div>}>
           <Routes>
-            <Route path="/" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/portfolio" element={<Home />} />
+            <Route path="/contact" element={<Home />} />
             <Route path="/tm-portfolio" element={<PortfolioGoogle />} />
-            <Route path="/portfolio/:projectId" element={<ProjectDetail/>} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/portfolio/:projectId" element={<ProjectDetail />} />
+            <Route path="*" element={<div className="article-layout"><h1>Page not found</h1><Link to="/">Return home</Link></div>} />
           </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
-  );
+        </Suspense>
+      </main>
+      <footer className="site-footer">
+        <span>Rowan Morse · Computer vision & machine learning</span>
+        <label className="ui-font-control">UI font <select value={uiTypography} onChange={event => setUiTypography(event.target.value === 'reading' ? 'reading' : 'mono')}><option value="mono">Mono</option><option value="reading">Reading</option></select></label>
+      </footer>
+    </div>
+  </HashRouter>;
 }

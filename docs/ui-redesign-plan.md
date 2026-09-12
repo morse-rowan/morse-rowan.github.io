@@ -1,5 +1,44 @@
 # Personal website: UI redesign and Codex workflow
 
+## Accepted local implementation — September 12, 2026
+
+Rowan approved applying the compact profile-sidebar layout to the actual local
+website, using the **Graphite palette with no lava lamp or decorative animation**.
+This supersedes the exploration-only scope recorded below. Work is isolated on
+`codex/graphite-ui`. The earlier typography and gallery state is saved as local
+checkpoint `9dc0550`; the gallery remains available at `/designs`. No publishing.
+
+- `Home.tsx` implements a 1040px bounded layout: 245px sticky profile sidebar,
+  64px gap, compact work/research/contact column. At 760px the profile stacks
+  above the work. Navigation retains the original system monospace stack.
+- `graphite.css` uses the selected Graphite light/dark colors. Existing saved
+  theme settings are respected; new visitors default to light. No art, canvas,
+  animation timers, or animation dependency is imported by the main site.
+- JetBrains Mono remains the default main UI. Reading remains the independent
+  default for writeups, with both choices available and persisted.
+- Profile, projects, publications, awards, and links now live in `src/content/`.
+  All four existing work entries and the complete publication author list are
+  retained. Technology lists use small native disclosures. No invented roles,
+  experience dates, or new claims have been added.
+- Both full Markdown writeups keep their existing routes, HTML, tables, images,
+  and math. The renderer and KaTeX load only for detail routes. Media are lazy
+  loaded with intrinsic dimensions reserved for the existing PNG/GIF assets.
+- Section links use HashRouter query parameters. Legacy portfolio/contact URLs
+  land on homepage sections; team-matching routing and analytics remain intact.
+  SafeNet headings have stable IDs and its TOC now uses router-aware links.
+- Build passes. Homepage application JS is about 31.5kB minified plus the shared
+  144.5kB entry; the roughly 616kB Markdown/math chunk is deferred. These are
+  bundle measurements, not a browser performance benchmark. The existing large
+  detail-chunk and stale Browserslist warnings remain. Missing ESLint config is
+  pre-existing; lint is not claimed to pass.
+
+Browser checks include desktop 1440px, mobile 390px, 320px overflow, Graphite
+light/dark, independent font controls, full writeup rendering, SafeNet section
+links, direct entry/refresh and Back/Forward, and legacy route entry. No
+deployment, dependency installation, or hosting configuration changes are needed.
+
+## Earlier exploration history
+
 Prepared September 12, 2026. Setup and the round-1 local typography comparison are
 complete. The selected typography is now applied to the local site's existing
 pages and writeups. The comparison remains development-only. Nothing is published.

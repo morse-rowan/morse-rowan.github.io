@@ -19,10 +19,10 @@ Treat proposed visual choices as starting points; Rowan's feedback takes priorit
 
 ## Design
 
-- Current task scope is lightweight visual exploration, not production UI work.
-  Use the development-only `/designs` gallery to compare distinct compositions;
-  the user explicitly requested multiple directions, including one near the
-  existing website. Keep gallery controls/preferences isolated from actual pages.
+- Current scope: implement the selected compact sidebar design in the local
+  website on `codex/graphite-ui`, with the Graphite palette and no lava lamp or
+  decorative animation. This supersedes the earlier exploration-only scope.
+  Do not push or deploy. Preserve `/designs` as an independent comparison gallery.
 - Latest preference: Research Index's compactness and clarity, combined with a
   narrow one-page layout. The new Index studies (E–H) explore this; research-first
   order is not required. Keep prior drafts available and avoid production refactors.
@@ -38,7 +38,7 @@ Treat proposed visual choices as starting points; Rowan's feedback takes priorit
 - Typography tokens live in `src/styles/typography.css`; the shared switch and
   preference hook persist UI and writeup choices separately in local storage.
 - Aim for a professional personal site with a narrow reading column, clear
-  hierarchy, useful whitespace, restrained color, and one quiet header animation.
+  hierarchy, useful whitespace, restrained color, and no decorative animation.
 - Let section rules or header artwork extend beyond the text column; keep prose
   readable on wide screens. Use a single-column layout on mobile.
 - Favor simple experience/publication/project rows. Avoid nested cards, excessive
@@ -55,8 +55,10 @@ Treat proposed visual choices as starting points; Rowan's feedback takes priorit
 - Preserve factual content, authorship, awards, links, and existing project slugs.
   Do not invent employers, dates, publication venues, outcomes, or blog posts.
 - Do not restore the removed headshot or pull it from Git history.
-- Plan structured content under `src/content/` so adding an entry does not require
-  editing layout components. These files are proposed, not yet implemented.
+- Structured content now lives under `src/content/`: profile, projects, and
+  publications. Add entries there instead of changing the layout components.
+  `writeupImages.ts` records existing media dimensions to prevent layout shifts;
+  include dimensions when adding new writeup media.
 - Reuse existing Markdown writeups, image assets, and math/table rendering.
 - Preserve `/#/portfolio`, `/#/portfolio/safenet`,
   `/#/portfolio/sat_diffusion`, `/#/contact`, and `/#/tm-portfolio` behavior
