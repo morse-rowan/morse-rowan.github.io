@@ -2,7 +2,7 @@ export const profile = {
   name: 'Rowan Morse',
   photo: '/imgs/picture.jpg',
   location: 'Pittsburgh, PA',
-  role: 'Computer science undergraduate',
+  role: 'CS undergraduate',
   bio: 'Interested in computer vision, machine learning, vision-language models, diffusion techniques, and artificial intelligence.',
   education: 'BS Computer Science · University of Pittsburgh',
   graduation: 'December 2027',

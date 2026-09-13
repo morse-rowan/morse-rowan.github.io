@@ -1,9 +1,9 @@
 /* Graphite implementation. The development gallery remains independent. */
 html:has(.graphite-site) { scroll-behavior: auto; }
 .graphite-site {
-  --page: #faf8f3; --ink: #30302f; --muted: #6f6d65; --line: #dedbd2;
-  --accent: #484b46; --surface: #efede6;
-  --exterior: #eeebe3; --paper-rule: #dad6ca; --sheet-width: 1040px;
+  --page: #f7f2e7; --ink: #252622; --muted: #59594f; --line: #c9c3b5;
+  --accent: #373e33; --surface: #eae3d5;
+  --exterior: #e8e1d3; --paper-rule: #cdc5b5; --sheet-width: 1040px;
   --timeline-date-width: 104px; --timeline-gap: 25px;
   --bash-text: #875600; --bash-host: #7c418d;
   min-height: 100vh; background-color: var(--exterior); color: var(--ink);
@@ -47,9 +47,6 @@ html:has(.graphite-site) { scroll-behavior: auto; }
 .text-links svg { width: 12px; height: 12px; flex-shrink: 0; }
 .profile-column .text-links { gap: 0 14px; }
 .profile-column .text-links a { font-size: 10px; }
-.section-index { display: flex; flex-direction: column; gap: 3px; border-top: 1px solid var(--line); padding-top: 17px; margin-top: 22px; font-size: 11px; }
-.section-index a { display: flex; align-items: center; gap: 14px; min-height: 38px; }
-.section-index span { color: var(--muted); font-size: 9px; }
 .home-content { min-width: 0; }
 .home-section { border-top: 1px solid var(--line); padding: 28px 0; scroll-margin-top: 24px; }
 .home-section:first-child { border-top: 0; padding-top: 0; }
@@ -135,8 +132,6 @@ html:has(.graphite-site) { scroll-behavior: auto; }
   .profile-column > .eyebrow { max-width: none; }
   .profile-bio { max-width: 550px; margin-top: 14px; }
   .profile-meta { margin-top: 10px; }
-  .section-index { flex-direction: row; flex-wrap: wrap; gap: 4px 22px; margin-top: 13px; padding-top: 10px; }
-  .section-index a { gap: 7px; min-height: 40px; }
   .site-nav { padding: 10px 20px; gap: 4px 14px; flex-wrap: wrap; }
   .bash-brand-group { flex-basis: 100%; }
   .site-nav nav { gap: 16px; font-size: 11px; }

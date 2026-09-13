@@ -1,5 +1,17 @@
 # Personal website: UI redesign and Codex workflow
 
+## Cream palette and simpler navigation — September 12, 2026
+
+Rowan authorized publishing the current local version to main and GitHub Pages.
+Light mode uses a subtle cream sheet with darker text and clearer rules. The
+navbar and section 03 both say Papers; the duplicate section navigation beneath
+the profile is removed. Existing research route identifiers remain compatible.
+The local profile label is now CS undergraduate. Dark mode is unchanged.
+
+Verification: build/typecheck passed; Papers navigation and desktop/mobile
+previews checked, with no horizontal overflow at 390px or 320px. Existing
+Browserslist and large detail-chunk warnings remain.
+
 ## Profile photo — September 12, 2026
 
 Rowan requested adding the newly supplied `public/imgs/picture.jpg` above the

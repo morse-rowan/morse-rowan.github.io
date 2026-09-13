@@ -9,7 +9,7 @@ export default function Navbar({ darkMode, toggleDarkMode }: { darkMode: boolean
       <nav aria-label="Main navigation">
         <Link to="/?section=experience">Experience</Link>
         <Link to="/?section=projects">Projects</Link>
-        <Link to="/?section=research">Research</Link>
+        <Link to="/?section=research">Papers</Link>
         <Link to="/?section=contact">Contact</Link>
       </nav>
       <button className="theme-toggle" onClick={toggleDarkMode} aria-label={`Switch to ${darkMode ? 'light' : 'dark'} theme`}>

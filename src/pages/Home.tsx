@@ -5,11 +5,6 @@ import { projects } from '../content/projects';
 import { publications } from '../content/publications';
 import { experience } from '../content/experience';
 
-const sections = [
-  ['experience', 'Experience'], ['projects', 'Projects'],
-  ['research', 'Research'], ['contact', 'Contact'],
-] as const;
-
 function SocialLinks() {
   return <div className="text-links"><a href={`mailto:${profile.email}`}>Email <ArrowUpRight /></a><a href={profile.github}>GitHub <ArrowUpRight /></a><a href={profile.linkedin}>LinkedIn <ArrowUpRight /></a></div>;
 }
@@ -27,9 +22,6 @@ export default function Home() {
       <p className="profile-bio">{profile.bio}</p>
       <p className="profile-meta">{profile.education}<br />Expected graduation · {profile.graduation}</p>
       <SocialLinks />
-      <nav className="section-index" aria-label="Page sections">
-        {sections.map(([id, label], index) => <Link to={`/?section=${id}`} key={id}><span>0{index + 1}</span>{label}</Link>)}
-      </nav>
     </aside>
     <div className="home-content">
       <section className="home-section" id="experience" tabIndex={-1}>
@@ -73,7 +65,7 @@ export default function Home() {
         </li>)}</ol>
       </section>
       <section className="home-section" id="research" tabIndex={-1}>
-        <h2><span>03</span> Publications</h2>
+        <h2><span>03</span> Papers</h2>
         <ol className="timeline-list">
           {publications.map(paper => <li className="timeline-row" key={paper.url}>
             <p className="timeline-date">{paper.date}</p>
