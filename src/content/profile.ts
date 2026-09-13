@@ -3,7 +3,7 @@ export const profile = {
   photo: '/imgs/picture.jpg',
   location: 'Pittsburgh, PA',
   role: 'CS undergraduate',
-  bio: 'Interested in computer vision, machine learning, vision-language models, diffusion techniques, and artificial intelligence.',
+  bio: '',
   education: 'BS Computer Science · University of Pittsburgh',
   graduation: 'December 2027',
   email: 'rowan.morse16@gmail.com',
