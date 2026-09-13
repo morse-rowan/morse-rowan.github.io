@@ -1,0 +1,181 @@
+/* Round 3: the chosen profile sidebar, with one continuous content column. */
+.concept-frame { container-type: inline-size; width: 100%; }
+.concept-frame-mobile { max-width: 390px; margin: 24px auto; border: 1px solid #c6cec7; box-shadow: 0 10px 35px #172e2210; }
+.gallery-rounds { flex-wrap: wrap; gap: 6px 20px; }
+.gallery-mobile-note { margin-top: 5px; color: #68716a; font-size: 11px; }
+.gallery-options { flex-wrap: wrap; }
+.gallery-design-pair { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.gallery-reference { text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; color: #374e40; }
+.swatch-profile-lava { background: #f8f8f7; padding-right: 17px; }
+.swatch-profile-lava i:first-child { background: linear-gradient(#835eff,#ff008d); height: 15px; }
+.swatch-content-lava { background: #f7fafc; padding-left: 15px; }
+.swatch-content-lava i:first-child { background: linear-gradient(#835eff,#ff008d); height: 10px; }
+.swatch-navbar-lava { border-top: 9px solid #bd31cf; background: #fbf9fc; }
+.swatch-navbar-lava i:first-child { height: 4px; background: #b7a7c3; }
+.swatch-lava-rail { background: #fbf9fd; border-top: 8px solid #835eff; }
+.swatch-lava-rail i:first-child { background: #ff008d; height: 5px; }
+.swatch-paper-rail { background: #fcfcf9; border-left: 10px solid #e5e9e2; }
+.swatch-paper-rail i:first-child { height: 4px; background: #5d7262; }
+.swatch-ascii-rail { background: #faf7f0; }
+.swatch-ascii-rail i:first-child { border: 2px dotted #8b704b; background: transparent; border-radius: 50%; }
+.swatch-contour-rail { background: #f5f9fc; }
+.swatch-contour-rail i:first-child { border: 1px solid #809bb5; background: transparent; border-radius: 50%; transform: rotate(-20deg); }
+.concept-sidebar { --bg: #fcfcf9; --ink: #303c34; --muted: #68746c; --line: #dee3dc; --accent: #42674f; --surface: #f0f3ed; }
+.concept-sidebar .concept-header { border-bottom: 1px solid var(--line); }
+.concept-sidebar .concept-nav { max-width: 1040px; padding-block: 16px; }
+.concept-sidebar .concept-layout { max-width: 1040px; display: grid; grid-template-columns: 245px minmax(0, 1fr); gap: 64px; padding: 40px 24px 24px; }
+.concept-sidebar .concept-intro { padding: 0; position: sticky; top: 24px; align-self: start; min-width: 0; }
+.concept-sidebar .concept-content { min-width: 0; }
+.sidebar-signature { width: 44px; height: 34px; font: 20px/1 var(--font-nav); letter-spacing: -.08em; margin-bottom: 20px; }
+.sidebar-signature span { color: var(--accent); font-size: 15px; }
+.concept-sidebar .concept-intro > .concept-kicker { font-size: 9px; max-width: 210px; line-height: 1.7; margin-bottom: 10px; }
+.concept-sidebar .concept-intro h1 { font-size: 28px; letter-spacing: -.06em; }
+.concept-sidebar .concept-bio { font-size: 12px; line-height: 1.9; margin-top: 17px; }
+.concept-sidebar .concept-meta { font-size: 9px; line-height: 1.9; margin-top: 13px; }
+.concept-sidebar .concept-intro .concept-links { gap: 4px 14px; margin-top: 9px; }
+.concept-sidebar .concept-intro .concept-links a { font-size: 10px; }
+.sidebar-page-links { display: flex; flex-direction: column; gap: 3px; margin-top: 22px; padding-top: 17px; border-top: 1px solid var(--line); font-size: 11px; }
+.sidebar-page-links a { display: flex; gap: 14px; align-items: center; min-height: 36px; }
+.sidebar-page-links span { color: var(--muted); font-size: 9px; }
+.concept-sidebar .concept-section { padding-block: 25px; }
+.concept-sidebar .concept-section:first-child { padding-top: 0; border-top: 0; }
+.concept-sidebar .concept-section h2 { font-size: 11px; margin-bottom: 21px; }
+.concept-sidebar h3 { font-size: 15px; }
+.concept-sidebar .concept-project { grid-template-columns: minmax(0,1fr) 75px; gap: 23px; }
+.concept-sidebar .concept-image { grid-column: 2; grid-row: 1; border: 0; border-radius: 0; background: transparent; padding: 0; }
+.concept-sidebar .concept-image img { height: 69px; }
+.concept-sidebar .concept-project-copy > p:not(.concept-kicker) { font-size: 12px; }
+.concept-sidebar .concept-projects { gap: 19px; }
+.concept-sidebar .concept-project .concept-kicker { font-size: 9px; }
+.concept-sidebar .concept-links a, .concept-sidebar .concept-action { min-height: 36px; }
+.concept-sidebar .concept-authors { font-size: 11px; }
+.concept-sidebar .concept-footer { max-width: 1040px; padding-left: 333px; font-size: 9px; }
+.concept-sidebar .concept-writeup { max-width: 732px; padding-block: 32px 60px; }
+.concept-sidebar .concept-article-body { font-size: 17px; }
+.concept-sidebar:has(.concept-writeup) .concept-footer { padding-left: 24px; }
+.concept-paper-rail .concept-image { filter: saturate(.7); }
+
+/* Exact original gradient stops. Restraint comes from area, not muted colors. */
+.concept-lava-rail { --bg: #fcfafd; --ink: #362d40; --muted: #756a80; --line: #e4ddea; --accent: #7550a3; --surface: #f1ebf7; }
+.concept-lava-rail[data-dark='true'] { --bg: #1d1924; --ink: #ece5f4; --muted: #b4a7c1; --line: #44384f; --accent: #c4a2ee; --surface: #2c2435; }
+.concept-lava-rail .concept-header { display: flex; flex-direction: column-reverse; }
+.concept-lava-rail .concept-nav { width: 100%; }
+.concept-lava-rail .concept-art { display: block; height: 64px; background-image: linear-gradient(-206deg, #835eff 0%, #ff008d 100%); }
+.concept-lava-rail .concept-wave { display: none; }
+.concept-lava-rail .concept-lava { display: block; position: absolute; inset: 0; }
+.concept-lava-rail .concept-lava i { background-image: linear-gradient(-206deg, #ff9298 0%, #ff008d 100%); width: 24%; height: 125px; left: 9%; top: -90px; border-radius: 50%; animation: sidebar-lava 22s ease-in-out infinite alternate; }
+.concept-lava-rail .concept-lava i:nth-child(2) { left: 44%; top: -55px; width: 20%; height: 105px; animation-delay: -11s; }
+.concept-lava-rail .concept-lava i:nth-child(3) { left: 80%; top: -85px; width: 27%; animation-delay: -6s; }
+.concept-lava-rail:has(.concept-writeup) .concept-art { height: 64px; }
+@keyframes sidebar-lava { to { transform: translate(20px, 38px) rotate(14deg); border-radius: 38% 62% 65% 35%; } }
+
+/* ASCII is literal text, with a restrained warm accent and no decorative box. */
+.concept-ascii-rail { --bg: #fcfaf5; --ink: #3e3931; --muted: #797165; --line: #e3ded3; --accent: #876b44; --surface: #f2eee4; }
+.concept-ascii-rail[data-dark='true'] { --bg: #211e19; --ink: #eae4d8; --muted: #b6ab98; --line: #484035; --accent: #c9ad82; --surface: #302a22; }
+.sidebar-drawing { margin-top: 20px; height: 144px; position: relative; user-select: none; pointer-events: none; }
+.sidebar-ascii { margin: 0; color: var(--accent); background: transparent; font: 8px/8px var(--font-nav); letter-spacing: 0; white-space: pre; overflow: hidden; width: 200px; height: 144px; }
+.concept-ascii-rail .concept-projects { padding-left: 16px; border-left: 1px solid var(--line); }
+.concept-ascii-rail .concept-section h2 span { color: var(--accent); }
+
+/* Vector contours: a single drawing, each ring moving a little out of phase. */
+.concept-contour-rail { --bg: #f8fafc; --ink: #2e4051; --muted: #6b7a88; --line: #dce4eb; --accent: #4b7395; --surface: #eef3f7; }
+.concept-contour-rail[data-dark='true'] { --bg: #19212a; --ink: #e2eaf2; --muted: #a6b5c3; --line: #364756; --accent: #a1c2df; --surface: #222f3a; }
+.concept-contour-rail .sidebar-drawing { height: 135px; }
+.concept-contour-rail .index-contours { display: block; position: static; width: 180px; height: 130px; opacity: .7; animation: none; }
+.concept-contour-rail .index-contours ellipse { transform-origin: 90px 70px; animation: sidebar-contour 18s ease-in-out infinite alternate; }
+.concept-contour-rail .index-contours ellipse:nth-child(even) { animation-delay: -9s; }
+.concept-contour-rail .index-contours ellipse:nth-child(3n) { animation-delay: -4s; }
+.concept-contour-rail .concept-image { padding: 4px; border: 1px solid var(--line); }
+@keyframes sidebar-contour { to { transform: rotate(14deg) scaleX(.88); } }
+@media (prefers-reduced-motion: reduce) {
+  .concept-sidebar *, .concept-sidebar *::before { animation: none !important; }
+}
+
+/* Container queries make the Mobile preview behave like an actual small screen. */
+@container (max-width: 900px) {
+  .concept-sidebar .concept-layout { grid-template-columns: 220px minmax(0, 1fr); gap: 36px; }
+  .concept-sidebar .concept-footer { padding-left: 280px; }
+}
+@container (max-width: 760px) {
+  .concept-sidebar .concept-layout { display: block; padding: 25px 20px 15px; }
+  .concept-sidebar .concept-intro { position: relative; top: auto; padding: 0 0 24px; }
+  .concept-sidebar .sidebar-signature { display: none; }
+  .concept-sidebar .concept-intro h1 { font-size: 28px; }
+  .concept-sidebar .concept-intro > .concept-kicker { max-width: none; font-size: 9px; }
+  .concept-sidebar .concept-bio { font-size: 12px; margin-top: 14px; max-width: 550px; }
+  .concept-sidebar .concept-meta { margin-top: 10px; }
+  .concept-sidebar .concept-nav { padding: 12px 20px; gap: 6px 18px; flex-wrap: wrap; }
+  .concept-sidebar .concept-nav nav { gap: 18px; font-size: 11px; }
+  .concept-sidebar .concept-brand { font-size: 14px; }
+  .concept-sidebar .concept-nav a { min-height: 36px; }
+  .sidebar-page-links { flex-direction: row; flex-wrap: wrap; gap: 4px 22px; margin-top: 13px; padding-top: 10px; }
+  .sidebar-page-links a { gap: 7px; font-size: 10px; min-height: 38px; }
+  .concept-sidebar .concept-section:first-child { border-top: 1px solid var(--line); padding-top: 23px; }
+  .concept-sidebar .concept-section { padding-block: 23px; }
+  .concept-sidebar .concept-project { grid-template-columns: minmax(0,1fr) 60px; gap: 14px; }
+  .concept-sidebar .concept-image { width: auto; grid-column: 2; grid-row: 1; }
+  .concept-sidebar .concept-image img { height: 56px; }
+  .concept-sidebar h3 { font-size: 14px; }
+  .concept-sidebar .concept-project-copy > p:not(.concept-kicker) { font-size: 11px; }
+  .concept-sidebar .concept-footer { padding: 20px 20px 60px; flex-direction: column; gap: 8px; }
+  .concept-sidebar .concept-email { font-size: 12px; }
+  .concept-sidebar .concept-writeup { padding: 24px 20px 45px; }
+  .concept-sidebar .concept-writeup h1 { font-size: 28px; }
+  .concept-sidebar .concept-article-body { font-size: 16px; }
+  .concept-sidebar .sidebar-drawing { position: absolute; right: 0; top: 0; margin: 0; width: 85px; height: 60px; overflow: hidden; }
+  .concept-sidebar .sidebar-ascii { transform: scale(.42); transform-origin: left top; }
+  .concept-sidebar .index-contours { width: 85px; height: 60px; }
+  .concept-sidebar .concept-intro:has(.sidebar-drawing) > h1 { padding-right: 85px; font-size: 26px; }
+  .concept-sidebar .concept-intro:has(.sidebar-drawing) > .concept-kicker { padding-right: 85px; max-width: 285px; }
+  .concept-lava-rail .concept-art { height: 44px; }
+}
+@container (max-width: 360px) {
+  .concept-sidebar .concept-project { grid-template-columns: minmax(0,1fr); }
+  .concept-sidebar .concept-image { grid-column: 1; grid-row: 2; width: 60px; }
+  .concept-sidebar .concept-intro:has(.sidebar-drawing) > h1 { font-size: 24px; }
+  .sidebar-page-links { gap: 4px 15px; }
+}
+
+/* Placement drafts share exactly the same lamp paint and animation. */
+.concept-sidebar .lava-sample .concept-art { display: block; height: 78px; position: relative; width: 100%; background-image: linear-gradient(-206deg, #835eff 0%, #ff008d 100%); }
+.concept-sidebar .lava-sample .concept-wave { display: none; }
+.concept-sidebar .lava-sample .concept-lava { display: block; position: absolute; inset: 0; }
+.concept-sidebar .lava-sample .concept-lava i { background-image: linear-gradient(-206deg, #ff9298 0%, #ff008d 100%); width: 35%; height: 125px; left: -5%; top: -65px; border-radius: 50%; animation: sidebar-lava 22s ease-in-out infinite alternate; }
+.concept-sidebar .lava-sample .concept-lava i:nth-child(2) { left: 36%; top: -90px; width: 36%; height: 135px; animation-delay: -11s; }
+.concept-sidebar .lava-sample .concept-lava i:nth-child(3) { left: 77%; top: -85px; width: 38%; animation-delay: -6s; }
+.sidebar-lamp { margin-bottom: 23px; overflow: hidden; border-radius: 3px; }
+.content-lamp { margin-bottom: 26px; overflow: hidden; }
+.concept-sidebar .content-lamp .concept-art { height: 54px; }
+.concept-profile-lava .sidebar-signature { display: none; }
+.concept-content-lava .concept-content > #work { padding-top: 0; border-top: 0; }
+.writeup-lamp { margin-bottom: 24px; }
+.concept-sidebar .writeup-lamp .concept-art { height: 45px; }
+.concept[data-lava-palette='violet'] { --bg: #fcfafd; --ink: #362d40; --muted: #756a80; --line: #e4ddea; --accent: #7550a3; --surface: #f1ebf7; }
+.concept[data-lava-palette='graphite'] { --bg: #fafaf8; --ink: #30302f; --muted: #71716c; --line: #deded9; --accent: #484b46; --surface: #f0f0eb; }
+.concept[data-lava-palette='slate'] { --bg: #f7fafd; --ink: #2e4051; --muted: #697c8b; --line: #dbe4ec; --accent: #426f97; --surface: #edf3f8; }
+.concept[data-lava-palette='sage'] { --bg: #f5f8f1; --ink: #354333; --muted: #6e7c66; --line: #dce3d4; --accent: #527447; --surface: #eaf0e2; }
+.concept[data-lava-palette='violet'][data-dark='true'] { --bg: #1d1924; --ink: #ece5f4; --muted: #b4a7c1; --line: #44384f; --accent: #c4a2ee; --surface: #2c2435; }
+.concept[data-lava-palette='graphite'][data-dark='true'] { --bg: #1d1e1d; --ink: #e9e9e4; --muted: #aaada5; --line: #3d403a; --accent: #ccd4c7; --surface: #282b26; }
+.concept[data-lava-palette='slate'][data-dark='true'] { --bg: #19232d; --ink: #e4ecf5; --muted: #a7b8c8; --line: #374b5d; --accent: #a0c5e5; --surface: #243442; }
+.concept[data-lava-palette='sage'][data-dark='true'] { --bg: #1d251c; --ink: #e4ebdd; --muted: #acb8a4; --line: #3c4b35; --accent: #b0ce9c; --surface: #293524; }
+@container (max-width: 760px) {
+  .concept-profile-lava .sidebar-lamp { margin-bottom: 19px; }
+  .concept-sidebar .sidebar-lamp .concept-art { height: 55px; }
+  .concept-sidebar .content-lamp .concept-art { height: 40px; }
+  .content-lamp { margin-bottom: 22px; }
+}
+
+/* O: the lamp is the navbar background itself, with no color overlay. */
+.concept-navbar-lava .navbar-lamp { position: relative; isolation: isolate; border-bottom: 0; }
+.concept-navbar-lava .navbar-lamp .concept-art { position: absolute; inset: 0; height: 100%; z-index: -1; pointer-events: none; }
+.concept-navbar-lava .navbar-lamp .concept-nav { min-height: 88px; padding-block: 20px; color: #21132e; }
+.concept-navbar-lava .navbar-lamp .concept-nav a { font-weight: 600; }
+.concept-navbar-lava .navbar-lamp .concept-nav a:hover { color: #21132e; text-decoration: underline; text-decoration-thickness: 2px; }
+.concept-navbar-lava .navbar-lamp :focus-visible { outline-color: #21132e; }
+.concept-navbar-lava:has(.concept-writeup) .navbar-lamp .concept-art { position: absolute; inset: 0; height: 100%; }
+@container (max-width: 760px) {
+  .concept-navbar-lava .navbar-lamp .concept-nav { min-height: 88px; padding-block: 14px; gap: 0 20px; }
+}
+@media (max-width: 680px) {
+  .gallery-design-pair { grid-template-columns: 1fr; }
+}
