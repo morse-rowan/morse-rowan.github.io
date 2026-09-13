@@ -1,5 +1,19 @@
 # Personal website: UI redesign and Codex workflow
 
+## Profile photo — September 12, 2026
+
+Rowan requested adding the newly supplied `public/imgs/picture.jpg` above the
+profile name and testing locally. This supersedes the earlier no-headshot
+direction. The original asset is preserved and framed with CSS zoom,
+with a subtle rounded border: 200px on desktop and 170px
+at the existing mobile breakpoint. Short desktop windows scroll the profile
+naturally so the added photo does not make sidebar links inaccessible.
+
+Rowan subsequently authorized merging and publishing this change, with the
+footer paper and UI font controls removed and dark mode as the default.
+The UI now uses Mono and ruled paper in light mode. Explicit saved light-mode
+preferences remain respected; the header theme toggle remains available.
+
 ## Release authorization — September 12, 2026
 
 Rowan requested publishing the updated local website with clean version control.

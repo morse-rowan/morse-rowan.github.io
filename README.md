@@ -17,11 +17,12 @@ npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
 Stop this repository's running Vite preview before reinstalling dependencies on
 Windows; esbuild can otherwise remain locked. Use a feature branch for new work.
 
-The site uses a warm paper layout with Ruled/Grid/Plain options and Graphite dark
+The site defaults to Graphite dark mode, with a header toggle for ruled-paper light
 mode. The profile sidebar moves above the content on mobile. Sections are
 Experience, Projects, Research, and Contact; awards appear within projects.
-The Bash name honors reduced motion. UI and writeup fonts have independent,
-persistent Mono/Reading controls; existing theme preferences are retained.
+The Bash name honors reduced motion. The UI uses Mono; writeups retain their
+Mono/Reading control. Existing theme preferences are retained. The footer has no
+paper or font selectors.
 
 `/designs` and `/design-study` are local development comparisons. Their modules
 are excluded from production by the development-only branch in `src/main.tsx`.

@@ -19,6 +19,9 @@ export default function Home() {
 
   return <div className="home-layout">
     <aside className="profile-column" aria-label="About Rowan">
+      <div className="profile-photo">
+        <img src={profile.photo} alt={profile.name} width={3024} height={3024} decoding="async" />
+      </div>
       <p className="eyebrow">{profile.location} / {profile.role}</p>
       <h1>{profile.name}</h1>
       <p className="profile-bio">{profile.bio}</p>

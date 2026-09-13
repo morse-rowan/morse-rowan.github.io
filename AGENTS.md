@@ -19,6 +19,10 @@ Treat proposed visual choices as starting points; Rowan's feedback takes priorit
 
 ## Design
 
+- Latest release preference: remove the footer paper and UI font selectors.
+  Use Mono UI and ruled paper, with Graphite dark mode by default (respect an
+  explicit saved light theme). Keep the header theme toggle and writeup font control.
+
 - Latest local pass: use the warm paper sheet with Ruled/Grid/Plain exterior
   options and Graphite dark mode. Keep the desktop profile sidebar and Bash name.
   Section order is Experience, Projects, Research, Contact, with timeline
@@ -69,7 +73,9 @@ Treat proposed visual choices as starting points; Rowan's feedback takes priorit
 
 - Preserve factual content, authorship, awards, links, and existing project slugs.
   Do not invent employers, dates, publication venues, outcomes, or blog posts.
-- Do not restore the removed headshot or pull it from Git history.
+- Rowan subsequently requested the newly supplied `public/imgs/picture.jpg`
+  above the profile name, sized for desktop and mobile. Keep that photo;
+  do not restore the older removed headshot from Git history.
 - Structured content now lives under `src/content/`: profile, projects, and
   publications. Add entries there instead of changing the layout components.
   `writeupImages.ts` records existing media dimensions to prevent layout shifts;
