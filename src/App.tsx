@@ -12,8 +12,9 @@ function RoutePosition() {
   const location = useLocation();
   useEffect(() => {
     // HashRouter owns the hash; section destinations use its query string.
-    const section = new URLSearchParams(location.search).get('section')
+    const requestedSection = new URLSearchParams(location.search).get('section')
       || (location.pathname === '/contact' ? 'contact' : location.pathname === '/portfolio' ? 'work' : '');
+    const section = requestedSection === 'work' || requestedSection === 'awards' ? 'projects' : requestedSection;
     const frame = requestAnimationFrame(() => {
       const target = document.getElementById(section || 'main-content');
       if (target) {
@@ -29,6 +30,16 @@ function RoutePosition() {
 
 export default function App() {
   const [uiTypography, setUiTypography] = useTypographyPreference('ui');
+  const [paper, setPaper] = useState<'ruled' | 'grid' | 'plain'>(() => {
+    try {
+      const saved = localStorage.getItem('rowan:paper');
+      if (saved === 'grid' || saved === 'plain') return saved;
+    } catch { /* Use ruled paper when storage is unavailable. */ }
+    return 'ruled';
+  });
+  useEffect(() => {
+    try { localStorage.setItem('rowan:paper', paper); } catch { /* In-memory selection still works. */ }
+  }, [paper]);
   const [darkMode, setDarkMode] = useState(() => {
     try { return localStorage.getItem('theme') === 'dark'; } catch { return false; }
   });
@@ -38,7 +49,7 @@ export default function App() {
   }, [darkMode]);
 
   return <HashRouter>
-    <div className={`site-shell graphite-site${darkMode ? ' dark' : ''}`} data-ui-font={uiTypography}>
+    <div className={`site-shell graphite-site${darkMode ? ' dark' : ''}`} data-ui-font={uiTypography} data-paper={paper}>
       <a className="skip-link" href="#main-content" onClick={(event) => {
         event.preventDefault();
         document.getElementById('main-content')?.focus();
@@ -59,7 +70,10 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <span>Rowan Morse · Computer vision & machine learning</span>
-        <label className="ui-font-control">UI font <select value={uiTypography} onChange={event => setUiTypography(event.target.value === 'reading' ? 'reading' : 'mono')}><option value="mono">Mono</option><option value="reading">Reading</option></select></label>
+        <div className="appearance-controls">
+          <label className="ui-font-control">Paper <select aria-label="Paper pattern" value={paper} onChange={event => setPaper(event.target.value === 'grid' ? 'grid' : event.target.value === 'plain' ? 'plain' : 'ruled')}><option value="ruled">Ruled</option><option value="grid">Grid</option><option value="plain">Plain</option></select></label>
+          <label className="ui-font-control">UI font <select aria-label="UI font" value={uiTypography} onChange={event => setUiTypography(event.target.value === 'reading' ? 'reading' : 'mono')}><option value="mono">Mono</option><option value="reading">Reading</option></select></label>
+        </div>
       </footer>
     </div>
   </HashRouter>;

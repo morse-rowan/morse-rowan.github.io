@@ -72,7 +72,7 @@ export default function ProjectDetail() {
 
   return <div className="article-layout">
     <div className="writeup-toolbar">
-      <Link to="/?section=work" className="article-back"><ArrowLeft size={15} /> Back to selected work</Link>
+      <Link to="/?section=projects" className="article-back"><ArrowLeft size={15} /> Back to projects</Link>
       <TypographySwitch label="Writeup font" value={typography} onChange={setTypography} />
     </div>
     {loading ? <p className="article-status" role="status">Loading writeup…</p> : !project || content.error ? <div className="article-status"><h1>Writeup unavailable</h1><p>The project details could not be loaded.</p>{project && <a href={project.source}>View project source</a>}</div> : <>

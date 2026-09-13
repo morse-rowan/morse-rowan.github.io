@@ -19,9 +19,23 @@ Treat proposed visual choices as starting points; Rowan's feedback takes priorit
 
 ## Design
 
+- Latest local pass: use the warm paper sheet with Ruled/Grid/Plain exterior
+  options and Graphite dark mode. Keep the desktop profile sidebar and Bash name.
+  Section order is Experience, Projects, Research, Contact, with timeline
+  rows. Awards are inline under the associated projects; project images are
+  modest previews to the right of the text with links to full-size images;
+  only the narrowest screens stack them below.
+  Resume/knowledge-base sources supplied the new content; graduation is
+  December 2027. See the newest section of `docs/ui-redesign-plan.md`.
 - Current scope: implement the selected compact sidebar design in the local
-  website on `codex/graphite-ui`, with the Graphite palette and no lava lamp or
-  decorative animation. This supersedes the earlier exploration-only scope.
+  website on `codex/graphite-ui`, with the Graphite palette and no lava lamp.
+  The accepted navbar exception is the bare Bash name: `my@site:~$`, lowercase
+  `rowan morse`, amber text, and `.` / `_` Morse symbols. Rowan types once;
+  only the surname repeatedly backspaces and alternates between code and text.
+  Use JetBrains Mono without ligatures for the entire prompt, with
+  reduced-motion, offscreen, and hidden-tab handling. Hold each completed
+  Morse-code or text surname for 3.2 seconds; do not offer a pause control.
+  This supersedes the earlier exploration-only scope.
   Do not push or deploy. Preserve `/designs` as an independent comparison gallery.
 - Latest preference: Research Index's compactness and clarity, combined with a
   narrow one-page layout. The new Index studies (E–H) explore this; research-first

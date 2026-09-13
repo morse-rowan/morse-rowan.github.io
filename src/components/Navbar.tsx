@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Moon, Sun } from 'lucide-react';
+import BashName from './BashName';
 
 export default function Navbar({ darkMode, toggleDarkMode }: { darkMode: boolean; toggleDarkMode: () => void }) {
   return <header className="site-header">
     <div className="site-nav">
-      <Link className="site-brand" to="/">Rowan Morse<span aria-hidden="true">.</span></Link>
+      <BashName />
       <nav aria-label="Main navigation">
-        <Link to="/?section=work">Work</Link>
+        <Link to="/?section=experience">Experience</Link>
+        <Link to="/?section=projects">Projects</Link>
         <Link to="/?section=research">Research</Link>
         <Link to="/?section=contact">Contact</Link>
       </nav>

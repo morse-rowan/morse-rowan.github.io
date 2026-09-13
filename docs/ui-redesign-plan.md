@@ -1,9 +1,98 @@
 # Personal website: UI redesign and Codex workflow
 
+## Inline project awards and larger images — September 12, 2026
+
+Rowan requested integrating awards into Projects and removing the Awards section.
+The current section order is Experience → Projects → Research → Contact; both
+navigation menus and section numbering follow that order. Old `?section=awards`
+links now resolve to Projects, including refresh and browser history navigation.
+
+- DreamCatcher displays its two TartanHacks category awards under its description,
+  preserving the $3,000 team-prize qualification.
+- A compact Exploring Perforated Backpropagation project entry carries its third
+  place and $1,000 team prize. Its description comes from the supplied knowledge
+  base publication record. The complete author list and preprint citation remain
+  in Research. Its event month remains unresolved, so it shows 2025 and follows
+  projects with more precise dates in that year; no month or image is invented.
+- Award text now lives with each project in `src/content/projects.ts`; the separate
+  awards data module was removed.
+- Rowan's follow-up reduced project images and returned them to the right of
+  the copy: up to 140px on desktop, 110px on smaller desktop widths, and 96px
+  on mobile. At 360px and below they stack beneath the text as small previews.
+  Entries without images retain the full text width. Original proportions and
+  measured intrinsic dimensions are preserved. Clicking opens the original
+  image in a new tab.
+
+Verification: build/typecheck passes; all three awards and four images are present.
+Browser checks passed the old awards destination, refresh and Back, Research
+navigation, full-size image opening, and no overflow at 320, 390, 760, 761, 800,
+900, and 1440px in light and dark themes. Desktop/mobile screenshots inspected.
+Existing missing ESLint configuration and build warnings remain. Local only.
+
+## Project dates from GitHub history — September 12, 2026
+
+At Rowan's request, project dates now use the recorded implementation activity
+in each linked repository's default-branch history. These are inferred periods,
+not verified kickoff/completion dates: initial uploads can contain earlier work.
+Dates below use America/New_York time consistently. The homepage sorts by the
+latest project month, newest first, using `sortDate` in `src/content/projects.ts`.
+
+| Project | Display period | Evidence |
+| --- | --- | --- |
+| Satellite Image Generator | Dec 2025 | [Scripts and notebook uploaded December 10](https://github.com/morse-rowan/satellite_diffusion/commit/a9ace8498f5693adbbe3f617ff72bbf3107332da); [DDIM sampling fix December 16](https://github.com/morse-rowan/satellite_diffusion/commit/2707e18ad593b7364dbfb43205b92bbe7e123214). |
+| Automatic Highlight Reel Generator | Jul–Aug 2025 | Repository history begins July 11; [implementation setup July 12](https://github.com/pitt-cic/automatic-highlight-reel-generator/commit/ad2341736a23bc4d55eaefbff13234ae9db51a45) through [frontend integration August 26](https://github.com/pitt-cic/automatic-highlight-reel-generator/commit/9f917536b6078534eba89aa747e38a139c33db1d). |
+| DreamCatcher | Feb 2025 | [Initial app February 5](https://github.com/morse-rowan/DreamCatcher/commits) through EEG/video pipeline, notebooks, and results on February 8; agrees with the resume's TartanHacks month. |
+| SafeNet | Dec 2024–Jan 2025 | [Training notebook and results December 31](https://github.com/morse-rowan/SafeNet/commit/903f9fb7e43506dbff8f37c35546827de167da75); [pipeline/training/testing notebooks January 3](https://github.com/morse-rowan/SafeNet/commit/d04d10849c83f560351129e64d318e8dacc534c0). The first timestamp is January 1 UTC, December 31 Eastern. |
+
+Reviewed all 12 Satellite, 45 Highlight Generator, 11 DreamCatcher, and 26 SafeNet
+commits available in those default-branch histories. SafeNet's late-January and
+February README-only updates do not extend its development period. The Highlight
+Generator's February 2026 licensing/disclaimer edit is by another contributor
+and does not extend Rowan's project period or internship dates.
+
+## Paper exterior and timeline — September 12, 2026
+
+Rowan requested the ruled-paper exterior and bounded one-page feel of
+[Shreyash Ranjan's site](https://shreyashranjan.com/), with experience before
+projects and awards. This local pass retains the profile sidebar and Bash name.
+
+- The 1040px sheet has a warm light background with ruled outer margins;
+  Graphite dark mode has matching subdued margins. The footer's **Paper**
+  selector compares Ruled, Grid, and Plain and remembers the selection.
+- Sections are Experience → Projects → Awards → Research → Contact. Aligned
+  dates, fine vertical rules, and small markers connect entries. Current roles
+  use filled markers. Mobile stacks the dates above the entry text and keeps
+  a small visible paper margin. Section heading rules extend beyond the prose.
+- `src/content/experience.ts` adds Edwards Lifesciences, Kovashka's lab,
+  Pitt's AWS Cloud Innovation Center, and Medpath. `src/content/awards.ts`
+  separates category placements and team prizes from project descriptions.
+- Content sources: the user-supplied `Resume Studio/resume/build/main.pdf`,
+  the corresponding knowledge-base experience/project/award/publication records,
+  and the site's existing project descriptions, images, links, and authors.
+  Graduation is now December 2027, explicitly confirmed in the knowledge base.
+  Edwards retains the estimated effort-savings qualification. SafeNet is a
+  prototype with unsafe-region recall, not a deployed safety system. The paper
+  is labeled an arXiv preprint, separate from its hackathon recognition.
+- The initial pass left SafeNet and Satellite Image Generator undated; the
+  GitHub-history follow-up above now supplies their inferred periods and sorts
+  all projects chronologically. Perforated AI still shows only 2025 because
+  its event month differs across source records.
+- Existing `?section=work` and `/#/portfolio` destinations map to Projects.
+  Both writeup slugs, contact route, team-matching route, and gallery remain.
+
+Verification: production build/typecheck passes. Browser checks passed paper
+and font persistence, theme switching, section focus and Back/Forward, legacy
+route refresh, both Markdown writeups and their return links, reduced-motion
+Bash rendering, keyboard skip-link activation, loaded project images, and the
+team-matching/gallery routes without JavaScript errors. No homepage overflow
+at 320, 390, 760, 761, 800, 900, or 1440px in either theme. Desktop and mobile
+screenshots were visually inspected. The missing ESLint configuration and
+existing Browserslist/detail-chunk build warnings remain. Nothing is published.
+
 ## Accepted local implementation — September 12, 2026
 
 Rowan approved applying the compact profile-sidebar layout to the actual local
-website, using the **Graphite palette with no lava lamp or decorative animation**.
+website, using the **Graphite palette with no lava lamp**.
 This supersedes the exploration-only scope recorded below. Work is isolated on
 `codex/graphite-ui`. The earlier typography and gallery state is saved as local
 checkpoint `9dc0550`; the gallery remains available at `/designs`. No publishing.
@@ -12,8 +101,21 @@ checkpoint `9dc0550`; the gallery remains available at `/designs`. No publishing
   64px gap, compact work/research/contact column. At 760px the profile stacks
   above the work. Navigation retains the original system monospace stack.
 - `graphite.css` uses the selected Graphite light/dark colors. Existing saved
-  theme settings are respected; new visitors default to light. No art, canvas,
-  animation timers, or animation dependency is imported by the main site.
+  theme settings are respected; new visitors default to light.
+- The primary navbar now uses the selected bare Bash signature: `my@site:~$`,
+  lowercase `rowan morse`, amber text, and `.` / `_` Morse symbols. JetBrains
+  Mono without ligatures applies to the complete prompt. Rowan types once;
+  the surname alternates between `__ ___ ._. ... .` and `morse`, backspacing
+  character by character, holding the complete Morse-code or text surname for
+  3.2 seconds. A single character-step timer pauses offscreen or when the tab
+  is hidden. Reduced motion shows the resolved name without a cursor. The
+  profile name remains static and title-cased.
+  This approved exception supersedes the earlier no-typewriter guidance.
+  Verification: build/typecheck passed; the full loop and both backspacing
+  sequences, offscreen suspension, reduced motion, theme switching,
+  section navigation, and writeup refresh/home navigation passed browser checks.
+  No overflow or navbar overlap at 320, 390, 760, 800, or 1440px in either theme.
+  Existing Browserslist and large writeup-chunk build warnings remain.
 - JetBrains Mono remains the default main UI. Reading remains the independent
   default for writeups, with both choices available and persisted.
 - Profile, projects, publications, awards, and links now live in `src/content/`.
