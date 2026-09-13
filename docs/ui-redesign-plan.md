@@ -1,5 +1,11 @@
 # Personal website: UI redesign and Codex workflow
 
+## Release authorization — September 12, 2026
+
+Rowan requested publishing the updated local website with clean version control.
+This supersedes the local-only scope of the historical entries below.
+See [the migration record](releases/2026-09-12.md) for the release and rollback path.
+
 ## Inline project awards and larger images — September 12, 2026
 
 Rowan requested integrating awards into Projects and removing the Awards section.

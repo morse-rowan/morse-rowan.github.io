@@ -1,128 +1,92 @@
 # Rowan Morse's website
 
-React, TypeScript, Vite, and Tailwind. Published at [rowanmorse.me](https://rowanmorse.me)
-using GitHub Pages.
+React, TypeScript, Vite, and Tailwind, published at
+[rowanmorse.me](https://rowanmorse.me) through GitHub Pages.
 
-## Start here
+## Development
 
-The [UI redesign plan](docs/ui-redesign-plan.md) contains the repo audit, design
-direction, maintenance plan, implementation milestones, and ready-to-use Codex
-prompts. [AGENTS.md](AGENTS.md) gives future Codex sessions project guidance.
-
-Open **this repository folder** in Codex, rather than its parent `rowanmorse.me`
-folder, so Git and npm commands run from the correct location.
-
-## Local development
-
-The local implementation is on **`codex/graphite-ui`**. It uses the selected
-compact sidebar composition and Graphite light/dark palette, with no lava lamp.
-The profile moves above the work at 760px and below. Writeups retain their full
-Markdown content and independent Reading/Mono control. The UI font control is
-in the footer. Existing saved font and theme preferences are respected.
-
-The previous drafts are saved in local checkpoint `9dc0550`. No push or deployment
-is part of this work; the hosted website remains unchanged.
-
-Run these commands from the directory containing this file:
+Work from this repository directory, which contains `package.json` and `.git`.
+Read [AGENTS.md](AGENTS.md) for project guidance and the
+[design history](docs/ui-redesign-plan.md) for accepted design decisions.
 
 ```powershell
-# Needed for a fresh checkout or changed lockfile:
 npm ci
-
-# Start the development preview:
 npm run dev -- --host 127.0.0.1 --port 5173 --strictPort
 ```
 
-Open the printed local URL. Stop the server with Ctrl+C. If port 5173 is already
-occupied by this repo's preview, reuse it; otherwise choose another port.
+Stop this repository's running Vite preview before reinstalling dependencies on
+Windows; esbuild can otherwise remain locked. Use a feature branch for new work.
 
-### Visual design playground
+The site uses a warm paper layout with Ruled/Grid/Plain options and Graphite dark
+mode. The profile sidebar moves above the content on mobile. Sections are
+Experience, Projects, Research, and Contact; awards appear within projects.
+The Bash name honors reduced motion. UI and writeup fonts have independent,
+persistent Mono/Reading controls; existing theme preferences are retained.
 
-Open [the design gallery](http://127.0.0.1:5173/designs) to compare the latest compact
-one-page **Index studies**: Lava index, Light index, Margin ledger, and Contour index.
-The first four drafts remain available under **Original directions**. Each has
-a homepage and sample writeup, independent Mono/Reading controls, light/dark themes,
-and pausable decoration. These sketches are development-only and do not modify
-the actual site's UI or saved font preferences. The selected Graphite direction
-is now implemented at the root URL; these drafts remain available for comparison.
+`/designs` and `/design-study` are local development comparisons. Their modules
+are excluded from production by the development-only branch in `src/main.tsx`.
+The historical design checkpoints remain in Git.
 
-### Typography comparison
-
-While the development server is running, open
-[the local study](http://127.0.0.1:5173/design-study). Use A / B to compare
-sans-serif prose against JetBrains Mono, and the theme control for light/dark.
-Content and layout are shared. Header artwork is static for this typography round.
-The main site remains at `/`; the study is excluded from production builds.
-The temporary comparison lives in `src/design/` and is selected by the
-development-only branch in `src/main.tsx`.
-
-The accepted fonts are applied to the main site's existing pages: **Mono** by
-default for the UI and **Reading** by default for project writeups. Each has a
-Mono/Reading control with its own saved browser preference. Navigation retains
-the original hosted site's system monospace font. Edit the shared font tokens
-in `src/styles/typography.css` when refining these choices.
+## Validation
 
 ```powershell
 npm run build
-npm run preview -- --host 127.0.0.1
+npm run preview -- --host 127.0.0.1 --port 4173 --strictPort
+npm run lint
 ```
 
-`build` runs TypeScript checking and creates the production site in `dist/`.
-`preview` serves that build; use it for final checks, and `dev` for design iteration.
+`build` checks TypeScript and creates `dist/`. Check the production preview at
+1440, 390, and 320 px, including themes, fonts, navigation, and both writeups.
+A clean lockfile install and production build were verified on September 12,
+2026 with Node 20.18.0 and npm 11.2.0. CI uses Node 20.
 
-Baseline verified on September 12, 2026 with Node 20.18.0 and npm 11.2.0 using
-the existing installed dependencies. A fresh `npm ci` was not tested in this audit.
-CI currently specifies Node 20. Runtime/dependency upgrades should be a separate
-maintenance change, with supported versions verified when performed.
+Known maintenance issues: lint fails because there is no ESLint configuration;
+Browserslist data is stale; the lazy-loaded Markdown/math chunk exceeds Vite's
+500 KB warning threshold. Dependency/runtime upgrades are separate maintenance.
 
-**Known issue:** `npm run lint` currently fails because the repository has no
-ESLint configuration. Repair it in the first engineering milestone in the plan.
-
-## Where content currently lives
+## Content
 
 | Content | File |
 | --- | --- |
-| Name, interests, graduation, contact links | `src/content/profile.ts` |
-| Internship project, personal projects, awards and technologies | `src/content/projects.ts` |
-| Publication and complete author list | `src/content/publications.ts` |
-| Project writeups | `public/projects/safenet.md`, `public/sat_diffusion/sat_diffusion.md` |
-| Routes, theme | `src/App.tsx` |
-| Navigation and homepage | `src/components/Navbar.tsx`, `src/pages/Home.tsx` |
-| Graphite palette, compact layout, mobile breakpoints | `src/styles/graphite.css` |
-| Writeup image dimensions | `src/content/writeupImages.ts` |
-| Typography and global styling | `src/styles/globals.css`, `tailwind.config.js`, `index.html` |
+| Profile, education, contact links | `src/content/profile.ts` |
+| Experience | `src/content/experience.ts` |
+| Projects, awards, technologies | `src/content/projects.ts` |
+| Publication and full author list | `src/content/publications.ts` |
+| Writeups | `public/projects/safenet.md`, `public/sat_diffusion/sat_diffusion.md` |
+| Writeup media dimensions | `src/content/writeupImages.ts` |
+| Routing and appearance preferences | `src/App.tsx` |
+| Homepage and header | `src/pages/Home.tsx`, `src/components/Navbar.tsx`, `src/components/BashName.tsx` |
+| Layout and typography | `src/styles/graphite.css`, `src/styles/typography.css` |
 
-Add a project object to `src/content/projects.ts` to create a new row. A `writeup`
-path enables its existing-style `/#/portfolio/<slug>` route. Add the Markdown
-under `public/`, and give its images width/height attributes or an entry in
-`writeupImages.ts` so lazy loading reserves space. Use `detailUrl` for an external
-writeup. Optional `awards` and `demo` fields render only when supplied.
+Add project objects to `src/content/projects.ts`; a `writeup` path enables
+`/#/portfolio/<slug>`. Keep published slugs stable. Store Markdown under `public/`
+and record media dimensions to reserve image space. `detailUrl` supports external
+writeups, and optional `awards` and `demo` fields render only when provided.
 
-The homepage is continuous work → research → contact. Old `/#/portfolio` and
-`/#/contact` links open the corresponding homepage section; `/#/tm-portfolio`
-retains its analytics event. Section navigation uses router query parameters,
-including the existing SafeNet table of contents, so links support refresh and
-browser history without conflicting with HashRouter.
+## Publishing and rollback
 
-## Git and publishing
+`main` is the production branch. GitHub Pages is configured for **GitHub Actions**,
+with custom domain `rowanmorse.me` and HTTPS enforced (verified September 12, 2026).
+The existing `.github/workflows/deploy.yml` installs from the lockfile, builds,
+and deploys on a push to `main` or manual workflow dispatch.
 
-```powershell
-git status --short --branch
-git fetch origin
-git rev-list --left-right --count HEAD...origin/main
-```
+For an authorized release, commit and validate the feature branch, fetch the
+remote, review differences from `origin/main`, and merge without rewriting
+history. Push `main`, wait for the Actions deployment to succeed, then verify
+the public site and its assets. Do not publish merely to provide a local preview.
 
-The last command reports local-only commits first and remote-only commits second.
-At the September 12 audit, local `main` and `origin/main` both pointed to `aaa34c9`,
-with no differences or uncommitted files. Setup documents were then added on
-`codex/ui-design-setup`. The later `codex/graphite-ui` branch checkpoints those
-drafts and contains the local implementation. Nothing has been pushed.
+Do not use the legacy `npm run deploy` script: it writes to `gh-pages`, which is
+not the configured Pages source. Retain that old branch as history. `dist/` stays
+untracked. Preserve `public/CNAME`, verification metadata, and analytics IDs.
 
-`.github/workflows/deploy.yml` builds and deploys on a push to `main` or a manual
-workflow run. `public/CNAME` preserves the custom domain. The older `npm run deploy`
-command publishes to `gh-pages`; use the existing Actions workflow as the intended
-release path and verify the GitHub Pages source setting before the first release.
-The account setting itself was not inspected in this audit.
+The [September 2026 migration record](docs/releases/2026-09-12.md) documents the
+release boundaries, validation, and rollback instructions. The previous deployed
+source is preserved by the annotated `pre-paper-release-2026-09-12` tag. Rollback
+uses a new revert commit on `main`, followed by the same Actions deployment;
+never force-push or move the rollback tag.
 
-Use feature branches for iterations. Review the final changes, then explicitly
-request a merge/push when ready to publish.
+The existing `/#/portfolio`, `/#/portfolio/safenet`,
+`/#/portfolio/sat_diffusion`, `/#/contact`, and `/#/tm-portfolio` URLs remain
+supported. The team-matching route retains `tm_portfolio_view`. Section links use
+router query parameters; legacy `work` and `awards` section values map to Projects.
+This is a static-site release with no database, DNS, or data migration.
